@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Antecipação de Semestralidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="https://calculadorasbko.lovable.app/#menu">Menu</a></li>
+            </ul>
+        </div>  
+    </nav>
+
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="options-container">
+                <p class="group-title">1. Qual o período da antecipação?</p>
+                <label class="custom-radio">
+                    <input type="radio" name="periodo" value="1" checked>
+                    <span>Semestral</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="periodo" value="2">
+                    <span>Anual</span>
+                </label>
+            </div>
+
+            <div class="options-container">
+                <p class="group-title">2. Qual a modalidade do curso?</p>
+                <label class="custom-radio">
+                    <input type="radio" name="modalidade" value="1" checked>
+                    <span>Outros Cursos</span>
+                </label>
+                <label class="custom-radio">
+                    <input type="radio" name="modalidade" value="2">
+                    <span>Medicina</span>
+                </label>
+            </div>
+
+            <div class="warning-box">
+                <strong>Atenção:</strong> Em casos de não aplicação dos descontos e isenções, abrir chamado para o setor responsável.
+            </div>
+
+            <button class="btn-confirmar" onclick="confirmarConfiguracao()">Confirmar e Iniciar</button>
+        </div>
+    </div>
+
+    <!-- Container Principal da Calculadora -->
+    <div class="calculator-container">
+        <div class="calc-header">
+            <h2 class="calc-title">Calculadora de Antecipação</h2>
+            <p class="calc-subtitle">Simulador de antecipação de semestralidade e anualidade</p>
+            <p style="font-size: 0.95em; color: rgb(245, 245, 245); text-align: center; margin-top: 8px; line-height: 1.4;"> 
+                Verificar lançamento de créditos no financeiro 
+            </p>
+        </div>
+
+        <div id="setup-section" style="text-align: center; margin-top: 20px;">
+            <p>Clique abaixo para definir as regras da simulação.</p>
+            <button onclick="abrirModal()">Configurar Calculadora</button>
+        </div>
+
+        <!-- Formulário da Calculadora -->
+        <form id="calculator-form" onsubmit="return false;" style="display: none;">
+            
+            <div class="calc-body"> 
+                <fieldset>
+                    <legend>Referência de Mensalidade</legend>
+                    <div class="row-horizontal">
+                        <div class="input-group">
+                            <label for="valorIntegral">Valor Integral da Mensalidade (R$)</label>
+                            <input type="number" step="any" id="valorIntegral" placeholder="Ex: 1500.00" required>
+
+                            <p style="font-size: 0.85em; color: rgb(226, 222, 222); text-align: justify; margin-top: 8px; line-height: 1.4;"> 
+                            Informe o valor atualizado da mensalidade (sem descontos). 
+                            </p>
+                        </div>
+                    </div>    
+                </fieldset>
+
+                <fieldset>
+                    <legend>Descontos aplicados</legend>
+                    <div class="row-horizontal">
+                        <div class="input-group">
+                          <label for="bolsa1">Desconto Bolsa 1 (Campanha/Padrão) (%)</label>
+                          <input type="number" step="any" id="bolsa1" placeholder="Ex: 10" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="bolsa2">Desconto Bolsa 2 (Opcional) (%)</label>
+                            <input type="number" step="any" id="bolsa2" placeholder="0">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="bolsa3">Desconto Bolsa 3 (Opcional) (%)</label>
+                            <input type="number" step="any" id="bolsa3" placeholder="0">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="bolsa4">Desconto Bolsa 4 (Opcional) (%)</label>
+                            <input type="number" step="any" id="bolsa4" placeholder="0">
+                        </div>
+                    </div>
+                </fieldset>    
+
+                <fieldset>
+                    <legend>Parcelas antecipadas</legend>
+                    <div class="input-group">
+                        <label for="qtdParcelas">Quantidade de Parcelas a Antecipar</label>
+                        <input type="number" id="qtdParcelas" min="1" max="12" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Desconto</legend>
+                    <div class="input-group">
+                       <label for="percentualAntecipacao">Desconto por Antecipação (%)</label>
+                       <input type="number" step="any" id="percentualAntecipacao">
+                       <small style="color: #f5f5f5;">Preenchido automaticamente de acordo com as opções iniciais.</small>
+                    </div>
+                </fieldset>
+
+                <button type="button" onclick="calcularAntecipacao()">Calcular Valores</button>
+
+            </div>    
+        </form>
+
+        <div id="resultado"></div>  
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy;2026 YK.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
