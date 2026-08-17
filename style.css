@@ -12,7 +12,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(-90deg, #3a8de0, #0873b1ee, #3859ec);
+    background: linear-gradient(-90deg, #001A33, #003CA6, #0054A6);
     background-size: 400% 400%;
     animation: gradient 20s ease infinite;
     display: flex;
